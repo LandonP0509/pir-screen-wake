@@ -3,7 +3,7 @@ import subprocess
 import time
 
 PIR_PIN = 17 # GPIO pin connected to PIR sensor output
-SLEEP_MINUTES = 30
+SLEEP_MINUTES = 30 # Time in minutes before sleep (feel free to change)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIR_PIN, GPIO.IN)
