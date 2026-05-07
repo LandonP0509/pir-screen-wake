@@ -26,6 +26,7 @@ try:
 
         if motion:
             last_motion = time.time()
+            print("Motion detected...")
             if not screen_on:
                 print("Motion detected, waking screen...")
                 screen_wake()
