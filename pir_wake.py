@@ -12,11 +12,11 @@ screen_on = True
 last_motion = time.time()
 
 def screen_off():
-    subprocess.run(['xset', 'dpms', 'force', 'off'])
+    subprocess.run(['xset', '-display', ':0', 'dpms', 'force', 'off'])
 
 def screen_wake():
-    subprocess.run(['xset', 'dpms', 'force', 'on'])
-    subprocess.run(['xset', 's', 'reset'])
+    subprocess.run(['xset', '-display', ':0', 'dpms', 'force', 'on'])
+    subprocess.run(['xset', '-display', ':0', 's', 'reset'])
 
 print("PIR monitor running...")
 
