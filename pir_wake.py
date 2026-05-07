@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import subprocess
 import time
+import os
 
 PIR_PIN = 17 # GPIO pin connected to PIR sensor output
 SLEEP_MINUTES = 30 # Time in minutes before sleep (feel free to change)
@@ -12,11 +13,12 @@ screen_on = True
 last_motion = time.time()
 
 def screen_off():
-    subprocess.run(['xset', '-display', ':0', 'dpms', 'force', 'off'])
+    subprocess.run(['wlr-randr', '--output', 'HDMI-A-1', '--off'], 
+                   env={**os.environ, 'WAYLAND_DISPLAY': 'wayland-1'})
 
 def screen_wake():
-    subprocess.run(['xset', '-display', ':0', 'dpms', 'force', 'on'])
-    subprocess.run(['xset', '-display', ':0', 's', 'reset'])
+    subprocess.run(['wlr-randr', '--output', 'HDMI-A-1', '--on'], 
+                   env={**os.environ, 'WAYLAND_DISPLAY': 'wayland-1'})
 
 print("PIR monitor running...")
 
